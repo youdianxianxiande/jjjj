@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .clock {
+            width: 600px;
+            height: 600px;
+            background: url("images/时钟.jpg") no-repeat;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hour {
+            width: 100%;
+            height: 100%;
+            background: url("images/hour.png") no-repeat center center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .minute {
+            width: 100%;
+            height: 100%;
+            background: url("images/minute.png") no-repeat center center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .second {
+            width: 100%;
+            height: 100%;
+            background: url("images/second.png") no-repeat center center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="hour"></div>
+
+        <div class="minute"></div>
+
+        <div class="second"></div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    var hour=document.getElementsByClassName("hour");
+    var minute=document.getElementsByClassName("minute");
+    var second=document.getElementsByClassName("second");
+
+    fun();
+
+    setInterval(fun,100);
+
+    function fun() {
+        var seconds=new Date().getSeconds()+new Date().getMilliseconds()/1000;
+        var minutes=new Date().getMinutes()+seconds/60;
+        var hours=new Date().getHours()%12+minutes/60;
+
+        hour[0].style.webkitTransform="rotate("+hours*30+"deg)";
+        minute[0].style.webkitTransform="rotate("+minutes*6+"deg)";
+        second[0].style.webkitTransform="rotate("+seconds*6+"deg)";
+    }
+
+
+</script>
